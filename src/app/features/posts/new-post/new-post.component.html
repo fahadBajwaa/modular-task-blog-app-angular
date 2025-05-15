@@ -1,0 +1,20 @@
+<section class="new-post-form">
+  <h1>Create New Post</h1>
+  <form (ngSubmit)="onSubmit()" #postForm="ngForm">
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input id="title" name="title" [(ngModel)]="title" required />
+    </div>
+    <div class="form-group">
+      <label for="author">Author</label>
+      <input id="author" name="author" [(ngModel)]="author" required />
+    </div>
+    <div class="form-group">
+      <label for="summary">Summary</label>
+      <textarea id="summary" name="summary" rows="4" [(ngModel)]="summary" required></textarea>
+    </div>
+    <button type="submit" [disabled]="postForm.invalid">
+      Create Post
+    </button>
+  </form>
+</section>

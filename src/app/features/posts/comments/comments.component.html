@@ -1,0 +1,18 @@
+<section class="comments">
+  <h2>Comments for Post #{{ postId }}</h2>
+  @if (comments.length > 0) {
+  <ul class="comments-list">
+    @for (c of comments; track c) {
+    <li>{{ c }}</li>
+    }
+  </ul>
+  } @else {
+  <p class="no-comments">No comments yet.</p>
+  }
+  <div class="new-comment">
+    <input [(ngModel)]="newComment" placeholder="Type your comment" aria-label="New comment" />
+    <button (click)="addComment()" [disabled]="!newComment.trim()">
+      Add Comment
+    </button>
+  </div>
+</section>

@@ -1,0 +1,15 @@
+@if (post) {
+<section>
+  <h1>{{ post.title }}</h1>
+  <p>By {{ post.author }}</p>
+  <p>{{ post.summary }}</p>
+  <nav>
+    <a [routerLink]="['/', RP.POSTS, post.id, RP.COMMENTS]">
+      View Comments
+    </a>
+  </nav>
+  <router-outlet></router-outlet>
+</section>
+} @else {
+<p>Post Not Found.</p>
+}
