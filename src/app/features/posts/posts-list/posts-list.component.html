@@ -1,0 +1,25 @@
+<section>
+  <h1>All Posts ({{ totalPosts() }})</h1>
+  <div class="new-post-link">
+    <a [routerLink]="['/', RP.POSTS, RP.POSTS_NEW]" class="btn">Create New Post</a>
+  </div>
+  <label>
+    Filter by title:
+    <input [(ngModel)]="filterTerm" placeholder="Enter keyword" />
+  </label>
+  @if ((posts() | filter: filterTerm).length === 0) {
+  <p>No posts found.</p>
+  }
+  @if ((posts() | filter: filterTerm).length > 0) {
+  <ul class="posts-list">
+    @for (post of posts() | filter: filterTerm; track post.id) {
+    <li class="post-item">
+      <app-post-preview [post]="post"></app-post-preview>
+      <button type="button" class="favorite-btn" (click)="toggleFavorite(post.id)">
+        {{ post.favorite ? '★' : '☆' }}
+      </button>
+    </li>
+    }
+  </ul>
+  }
+</section>
